@@ -1,0 +1,17 @@
+{% extends "car/base.html" %}
+
+{% block content %}
+	<p>Выбранная страна: <b>{{ strana }}</b></p>
+	<p>Автомобили производимые в этой стране:</p>
+	<ul>
+		{% for new_auto in auto %}
+			<li><b>{{ new_auto.auto }}</b>  (дата публикации: {{ new_auto.date_add|date:'d.m.Yг. в H:i' }})
+			<a href="{% url 'car:edit_auto_url' new_auto.id %}">РЕДАКТИРОВАТЬ</a></li>
+
+			<br>
+		{% empty %}
+			<li>С БД ничего не вывелось</li>
+		{%endfor%}
+	</ul>
+	<a href="{% url 'car:new_cars_url' strana.id %}">Запись новой марки</a>
+{% endblock content %}

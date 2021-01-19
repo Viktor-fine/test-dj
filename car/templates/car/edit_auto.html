@@ -1,0 +1,12 @@
+{% extends "car/base.html" %}
+
+{% block content %}
+	<p>Редактирование автомобиля:</p>
+
+	<form action="{% url 'car:edit_auto_url' car.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Сохранить изменение</button>
+	</form>
+
+{% endblock content %}

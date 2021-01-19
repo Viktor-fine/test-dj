@@ -1,0 +1,12 @@
+{% extends "car/base.html" %}
+{%  block content %}
+	<p>Добавление новой страны:</p>
+	<form action="{% url 'car:new_countres_url' %}" method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name="submit">Запись страны</button>
+	</form>
+
+
+
+{% endblock content %}

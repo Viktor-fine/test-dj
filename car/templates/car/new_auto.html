@@ -1,0 +1,14 @@
+{% extends "car/base.html" %}
+
+{%  block content %}
+
+	<p> Данные автомобили производятся в
+	<a href="{% url 'car:cars_url' country.id %}">{{ country }}</a></p>
+	<p>Запись марки машины:</p>
+	<form action="{% url 'car:new_cars_url' country.id %}" method='post'>
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button name='submit'>Запись</button>
+	</form>
+
+{% endblock content %}

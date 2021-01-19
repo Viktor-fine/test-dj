@@ -1,0 +1,29 @@
+{% extends "car/base.html" %}
+
+{% block page_header %}
+	<div class="jumbotron">
+		<h1 class="display-3">Отслеживайте новые страны</h1>
+		<p class="lead">Добавте свою страну и укажите производимые там марки автомобилей! Но для этого сначала зарегистрируйтесь на сайте: </p>
+		<a class="btn btn-lg btn-primary" href="{% url 'users:register' %}" role="button">РЕГИСТРАЦИЯ &raquo</a>
+	</div>
+{% endblock page_header %}
+
+
+
+{% block content %}
+
+<p><h5>Здесь выводится список стран производителей 
+автомобилей. Если Вы хотите добавить новую страну нажмите <a href="{% url 'car:new_countres_url'%}">СЮДА</a></h5></p>
+<br>
+<ul>
+	{% for stran in strana %}
+		<li><h3>
+			<a href="{% url 'car:cars_url' stran.id %}">{{ stran }}</a>
+		</li></h3>
+		<br>
+	{% empty %}
+		<li><h3>Страны не вывелись из БД</li></h3>
+	{%endfor%}
+</ul>
+
+{% endblock content %}
